@@ -14,7 +14,7 @@ import version
 
 required = ['boto']
 
-DOWNLOAD_URL = 'https://github.com/downloads/otype/ec2-to-ssh/ec2-too-ssh-{0}.tar.gz'.format(version.__version__)
+DOWNLOAD_URL = 'https://github.com/rayatbuzzfeed/ec2-to-ssh/archive/master.zip'
 
 # Read the $HOME variable! Overwrite it if we're on Windows.
 HOME = os.getenv('HOME')
@@ -33,6 +33,7 @@ def get_data_files():
         return []
     return [
         (os.path.join(os.environ['HOME'], '.ec2ssh'), ['src/ec2_to_ssh/conf/settings.LIVE.cfg']),
+        (os.path.join(os.environ['HOME'], '.ec2ssh'), ['src/ec2_to_ssh/conf/settings.WEST.cfg']),
         (os.path.join(os.environ['HOME'], '.ec2ssh'), ['src/ec2_to_ssh/conf/settings.DEV.cfg']),
         (os.path.join(os.environ['HOME'], '.ec2ssh'), ['src/ec2_to_ssh/conf/settings.STAGE.cfg']),
     ]
