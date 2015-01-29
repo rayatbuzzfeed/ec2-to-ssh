@@ -25,6 +25,7 @@ from ec2_to_ssh.loghandling.LogFacility import LogFacility
 from ec2_to_ssh.messages.Messages import err
 from ec2_to_ssh.settings.Settings import Settings
 from ec2_to_ssh.settings.SettingsKeys import SSH_PORT, SSH_KEY, SSH_USER, EC2_HOSTNAME_PREFIX, EC2_AWS_DEFAULT_REGION
+from operator import attrgetter
 
 ####################################################################
 # CONFIGURATION PARAMETERS
@@ -100,7 +101,7 @@ class EC2SSH(object):
 
     def print_instances(self):
         ssh_config = ''
-        for instance in self.instances:
+        for instance in sort(self.instances, key=attrgetter('tags')):
             if instance.state == 'running':
                 try:
                     name = instance.tags['Name']

@@ -2,7 +2,7 @@
 set -e
 
 if [[ $# -lt 1 ]]; then
-	echo "Missing EC2 env: {live, dev, stage}!"
+	echo "Missing EC2 env: {east, west, dev, stage}!"
     exit 1
 fi
 
@@ -30,8 +30,8 @@ function rotate_config() {
 }
 
 case "$PARAMS" in
-  live)
-        rotate_config "LIVE"
+  east)
+        rotate_config "EAST"
         ;;
   west)
         rotate_config "WEST"
@@ -49,5 +49,3 @@ esac
 
 $PYTHON $CWD/ec2-instances.py
 exit 0
-
-
